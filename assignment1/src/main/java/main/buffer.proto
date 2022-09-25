@@ -1,0 +1,19 @@
+syntax = "proto2";
+package main;
+
+option java_multiple_files = true;
+option java_package = "com.example.tutorial.protos";
+option java_outer_classname = "BufferProtos";
+
+message Student{
+  optional int32 id = 1;
+  optional string name = 2;
+  optional string birthdate = 3;
+  optional int32 age = 4;
+  optional string regDate = 5;
+  optional string address = 6;
+
+}
+message Professor{
+
+}

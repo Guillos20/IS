@@ -22,13 +22,14 @@ public class App {
             long timeA = System.currentTimeMillis();
             xml("xml");
             long timeB = System.currentTimeMillis();
+
             System.out.println(timeB - timeA);
 
-            long timeC = System.currentTimeMillis();
             File f = xml("gzip");
             gZipCompression(f.getPath());
             long timeD = System.currentTimeMillis();
-            System.out.println(timeD - timeC);
+
+            System.out.println(timeD - timeA);
 
 
             // XML Unmarshalling
@@ -71,8 +72,8 @@ public class App {
 
     private static void gZipCompression(String path) throws IOException {
         Path source = Paths.get(path);
-        System.out.println(path);
-        Path target = Paths.get("test.xsl.gz");
+        //System.out.println(path);
+        Path target = Paths.get(source + "_target");
         try (GZIPOutputStream gos = new GZIPOutputStream(
                 Files.newOutputStream(target.toFile().toPath()));
              FileInputStream fis = new FileInputStream(source.toFile())) {
