@@ -15,6 +15,8 @@ public class Student {
     private Date registrationDate;
     private String address;
 
+
+
     public void setter(int id, String name, Date birthDate, int age, Date registrationDate, String address) {
         this.id = id;
         this.name = name;

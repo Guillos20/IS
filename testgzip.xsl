@@ -4,13 +4,13 @@
         <name>Albertina</name>
         <birthDate>3243242</birthDate>
         <phoneNumber>42342423</phoneNumber>
-        <address>a tua prima de 4</address>
+        <address>addr</address>
         <student id="1">
             <name>Alberto</name>
-            <birthDate>2022-09-25T20:41:16.023+01:00</birthDate>
+            <birthDate>2022-09-26T16:51:46.451+01:00</birthDate>
             <age>20</age>
-            <registrationDate>2022-09-25T20:41:16.023+01:00</registrationDate>
-            <address>a tua prima</address>
+            <registrationDate>2022-09-26T16:51:46.451+01:00</registrationDate>
+            <address>a</address>
         </student>
     </professor>
 </school>
