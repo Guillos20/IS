@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.*;
 import java.util.zip.GZIPOutputStream;
 
@@ -56,7 +58,10 @@ public class AppXML {
         for (int i = 0; i < 15000; i++){
             Student student = new Student();
             Date birth = faker.date().birthday();
-            student.setter(i, faker.name().fullName(), faker.phoneNumber().cellPhone(), genders[(int) (Math.random() * (3))],birth, new Date().getTime() - birth.getTime(),
+            student.setter(i, faker.name().fullName(), faker.phoneNumber().cellPhone(),
+                    genders[(int) (Math.random() * (3))],birth,
+                    Period.between(birth.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+                            new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()).getYears(),
                     faker.date().between(birth, new Date()), faker.address().streetAddress());
             allStudents.add(student);
         }
