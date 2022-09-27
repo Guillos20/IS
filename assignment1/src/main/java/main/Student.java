@@ -11,13 +11,12 @@ public class Student {
     private int id;
     private String name;
     private Date birthDate;
-    private int age;
+    private long age;
     private Date registrationDate;
     private String address;
+    private String professor;
 
-
-
-    public void setter(int id, String name, Date birthDate, int age, Date registrationDate, String address) {
+    public void setter(int id, String name, Date birthDate, long age, Date registrationDate, String address) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
@@ -26,4 +25,7 @@ public class Student {
         this.address = address;
     }
 
+    public void setProfessor(String professor) {
+        this.professor = professor;
+    }
 }

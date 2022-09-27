@@ -12,7 +12,7 @@ public class School {
     @XmlElement(name = "professor")
     List<Professor> professors;
 
-    public void setList(List <Professor> professors)
+    public void setProfessors(List <Professor> professors)
     {
         this.professors = professors;
     }

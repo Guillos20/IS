@@ -1,0 +1,23 @@
+syntax = "proto2";
+package main;
+
+option java_multiple_files = true;
+option java_package = "main";
+
+message StudentBuffer{
+  optional int32 id = 1;
+  optional string name = 2;
+  optional string birthdate = 3;
+  optional int32 age = 4;
+  optional string regDate = 5;
+  optional string address = 6;
+  repeated ProfessorBuffer profBuf = 7;
+}
+message ProfessorBuffer{
+  optional int32 id = 1;
+  optional string name = 2;
+  optional string birthdate = 3;
+  optional string phoneNumber = 4;
+  optional string address = 5;
+  repeated StudentBuffer studentBuf = 6;
+}
