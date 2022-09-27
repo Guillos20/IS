@@ -52,17 +52,18 @@ public class AppXML {
         ArrayList<Professor> allProfessors = new ArrayList<>();
         int min = 0;
         int max = 15;
+        String[] genders = {"Male", "Female", "Other"};
         for (int i = 0; i < 15000; i++){
             Student student = new Student();
             Date birth = faker.date().birthday();
-            student.setter(i, faker.name().fullName(), birth, new Date().getTime() - birth.getTime(),
+            student.setter(i, faker.name().fullName(), faker.phoneNumber().cellPhone(), genders[(int) (Math.random() * (3))],birth, new Date().getTime() - birth.getTime(),
                     faker.date().between(birth, new Date()), faker.address().streetAddress());
             allStudents.add(student);
         }
         for (int i = 0; i < 1000; i++){
             Professor professor = new Professor();
             Date birth = faker.date().birthday();
-            professor.setter(i, faker.name().fullName(), birth, faker.phoneNumber().phoneNumber(),
+            professor.setter(i, faker.name().fullName(), birth, faker.phoneNumber().cellPhone(),
                     faker.address().streetAddress());
             List<Student> studentsSub = allStudents.subList(min, max);
             for (Student student : studentsSub)
