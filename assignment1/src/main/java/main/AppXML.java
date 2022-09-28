@@ -24,21 +24,27 @@ public class AppXML {
             long timeA = System.currentTimeMillis();
             JAXBContext jaxbContext;
             jaxbContext = JAXBContext.newInstance(School.class);
-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            Marshaller marshaller = jaxbContext.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             File f = new File("assignment.xsl");
-            jaxbMarshaller.marshal(createSchoolObject(), f);
+            marshaller.marshal(createSchoolObject(), f);
             long timeB = System.currentTimeMillis();
-            System.out.println(timeB - timeA);
+            long xmlTime = timeB - timeA;
+            System.out.println("XML Time " + xmlTime);
             timeA = System.currentTimeMillis();
             gZipCompression(f.getPath());
             timeB = System.currentTimeMillis();
-            System.out.println(timeB - timeA);
-            System.out.println(f.length());
+            System.out.println("Compression GZIP Time " + (timeB - timeA));
+            System.out.println("XML + GZIP Time " + xmlTime + (timeB - timeA));
+            System.out.println("File Size " + f.length());
+            System.out.println("File GZIP Size " + new File("assignment.xsl.gz").length());
+            timeA = System.currentTimeMillis();
             File file = new File("assignment.xsl");
-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            School s = (School) jaxbUnmarshaller.unmarshal(file);
+            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+            School s = (School) unmarshaller.unmarshal(file);
             System.out.println(s);
+            timeB = System.currentTimeMillis();
+            System.out.println("Unmarshall time " + (timeB - timeA));
 
         } catch (JAXBException e) {
             e.printStackTrace();
@@ -86,7 +92,7 @@ public class AppXML {
 
     private static void gZipCompression(String path) throws IOException {
         Path source = Paths.get(path);
-        Path target = Paths.get("assignment1.xsl.gz");
+        Path target = Paths.get("assignment.xsl.gz");
         try (GZIPOutputStream gos = new GZIPOutputStream(
                 Files.newOutputStream(target.toFile().toPath()));
              FileInputStream fis = new FileInputStream(source.toFile())) {
