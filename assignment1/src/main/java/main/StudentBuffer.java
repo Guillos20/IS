@@ -17,6 +17,8 @@ private static final long serialVersionUID = 0L;
   }
   private StudentBuffer() {
     name_ = "";
+    cell_ = "";
+    gender_ = "";
     birthdate_ = "";
     regDate_ = "";
     address_ = "";
@@ -60,41 +62,53 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
+            com.google.protobuf.ByteString bs = input.readBytes();
             bitField0_ |= 0x00000002;
-            name_ = s;
+            name_ = bs;
             break;
           }
           case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
+            com.google.protobuf.ByteString bs = input.readBytes();
             bitField0_ |= 0x00000004;
-            birthdate_ = s;
+            cell_ = bs;
             break;
           }
-          case 32: {
+          case 34: {
+            com.google.protobuf.ByteString bs = input.readBytes();
             bitField0_ |= 0x00000008;
-            age_ = input.readInt32();
+            gender_ = bs;
             break;
           }
           case 42: {
-            java.lang.String s = input.readStringRequireUtf8();
+            com.google.protobuf.ByteString bs = input.readBytes();
             bitField0_ |= 0x00000010;
-            regDate_ = s;
+            birthdate_ = bs;
             break;
           }
-          case 50: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 48: {
             bitField0_ |= 0x00000020;
-            address_ = s;
+            age_ = input.readInt32();
             break;
           }
           case 58: {
-            if (!((mutable_bitField0_ & 0x00000040) != 0)) {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField0_ |= 0x00000040;
+            regDate_ = bs;
+            break;
+          }
+          case 66: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField0_ |= 0x00000080;
+            address_ = bs;
+            break;
+          }
+          case 74: {
+            if (!((mutable_bitField0_ & 0x00000100) != 0)) {
               profBuf_ = new java.util.ArrayList<main.ProfessorBuffer>();
-              mutable_bitField0_ |= 0x00000040;
+              mutable_bitField0_ |= 0x00000100;
             }
             profBuf_.add(
-                input.readMessage(main.ProfessorBuffer.parser(), extensionRegistry));
+                input.readMessage(main.ProfessorBuffer.PARSER, extensionRegistry));
             break;
           }
           default: {
@@ -114,7 +128,7 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
-      if (((mutable_bitField0_ & 0x00000040) != 0)) {
+      if (((mutable_bitField0_ & 0x00000100) != 0)) {
         profBuf_ = java.util.Collections.unmodifiableList(profBuf_);
       }
       this.unknownFields = unknownFields.build();
@@ -177,7 +191,9 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      name_ = s;
+      if (bs.isValidUtf8()) {
+        name_ = s;
+      }
       return s;
     }
   }
@@ -200,18 +216,114 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int BIRTHDATE_FIELD_NUMBER = 3;
+  public static final int CELL_FIELD_NUMBER = 3;
+  private volatile java.lang.Object cell_;
+  /**
+   * <code>optional string cell = 3;</code>
+   * @return Whether the cell field is set.
+   */
+  @java.lang.Override
+  public boolean hasCell() {
+    return ((bitField0_ & 0x00000004) != 0);
+  }
+  /**
+   * <code>optional string cell = 3;</code>
+   * @return The cell.
+   */
+  @java.lang.Override
+  public java.lang.String getCell() {
+    java.lang.Object ref = cell_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      if (bs.isValidUtf8()) {
+        cell_ = s;
+      }
+      return s;
+    }
+  }
+  /**
+   * <code>optional string cell = 3;</code>
+   * @return The bytes for cell.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getCellBytes() {
+    java.lang.Object ref = cell_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      cell_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int GENDER_FIELD_NUMBER = 4;
+  private volatile java.lang.Object gender_;
+  /**
+   * <code>optional string gender = 4;</code>
+   * @return Whether the gender field is set.
+   */
+  @java.lang.Override
+  public boolean hasGender() {
+    return ((bitField0_ & 0x00000008) != 0);
+  }
+  /**
+   * <code>optional string gender = 4;</code>
+   * @return The gender.
+   */
+  @java.lang.Override
+  public java.lang.String getGender() {
+    java.lang.Object ref = gender_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      if (bs.isValidUtf8()) {
+        gender_ = s;
+      }
+      return s;
+    }
+  }
+  /**
+   * <code>optional string gender = 4;</code>
+   * @return The bytes for gender.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getGenderBytes() {
+    java.lang.Object ref = gender_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      gender_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int BIRTHDATE_FIELD_NUMBER = 5;
   private volatile java.lang.Object birthdate_;
   /**
-   * <code>optional string birthdate = 3;</code>
+   * <code>optional string birthdate = 5;</code>
    * @return Whether the birthdate field is set.
    */
   @java.lang.Override
   public boolean hasBirthdate() {
-    return ((bitField0_ & 0x00000004) != 0);
+    return ((bitField0_ & 0x00000010) != 0);
   }
   /**
-   * <code>optional string birthdate = 3;</code>
+   * <code>optional string birthdate = 5;</code>
    * @return The birthdate.
    */
   @java.lang.Override
@@ -223,12 +335,14 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      birthdate_ = s;
+      if (bs.isValidUtf8()) {
+        birthdate_ = s;
+      }
       return s;
     }
   }
   /**
-   * <code>optional string birthdate = 3;</code>
+   * <code>optional string birthdate = 5;</code>
    * @return The bytes for birthdate.
    */
   @java.lang.Override
@@ -246,18 +360,18 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int AGE_FIELD_NUMBER = 4;
+  public static final int AGE_FIELD_NUMBER = 6;
   private int age_;
   /**
-   * <code>optional int32 age = 4;</code>
+   * <code>optional int32 age = 6;</code>
    * @return Whether the age field is set.
    */
   @java.lang.Override
   public boolean hasAge() {
-    return ((bitField0_ & 0x00000008) != 0);
+    return ((bitField0_ & 0x00000020) != 0);
   }
   /**
-   * <code>optional int32 age = 4;</code>
+   * <code>optional int32 age = 6;</code>
    * @return The age.
    */
   @java.lang.Override
@@ -265,18 +379,18 @@ private static final long serialVersionUID = 0L;
     return age_;
   }
 
-  public static final int REGDATE_FIELD_NUMBER = 5;
+  public static final int REGDATE_FIELD_NUMBER = 7;
   private volatile java.lang.Object regDate_;
   /**
-   * <code>optional string regDate = 5;</code>
+   * <code>optional string regDate = 7;</code>
    * @return Whether the regDate field is set.
    */
   @java.lang.Override
   public boolean hasRegDate() {
-    return ((bitField0_ & 0x00000010) != 0);
+    return ((bitField0_ & 0x00000040) != 0);
   }
   /**
-   * <code>optional string regDate = 5;</code>
+   * <code>optional string regDate = 7;</code>
    * @return The regDate.
    */
   @java.lang.Override
@@ -288,12 +402,14 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      regDate_ = s;
+      if (bs.isValidUtf8()) {
+        regDate_ = s;
+      }
       return s;
     }
   }
   /**
-   * <code>optional string regDate = 5;</code>
+   * <code>optional string regDate = 7;</code>
    * @return The bytes for regDate.
    */
   @java.lang.Override
@@ -311,18 +427,18 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int ADDRESS_FIELD_NUMBER = 6;
+  public static final int ADDRESS_FIELD_NUMBER = 8;
   private volatile java.lang.Object address_;
   /**
-   * <code>optional string address = 6;</code>
+   * <code>optional string address = 8;</code>
    * @return Whether the address field is set.
    */
   @java.lang.Override
   public boolean hasAddress() {
-    return ((bitField0_ & 0x00000020) != 0);
+    return ((bitField0_ & 0x00000080) != 0);
   }
   /**
-   * <code>optional string address = 6;</code>
+   * <code>optional string address = 8;</code>
    * @return The address.
    */
   @java.lang.Override
@@ -334,12 +450,14 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      address_ = s;
+      if (bs.isValidUtf8()) {
+        address_ = s;
+      }
       return s;
     }
   }
   /**
-   * <code>optional string address = 6;</code>
+   * <code>optional string address = 8;</code>
    * @return The bytes for address.
    */
   @java.lang.Override
@@ -357,17 +475,17 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int PROFBUF_FIELD_NUMBER = 7;
+  public static final int PROFBUF_FIELD_NUMBER = 9;
   private java.util.List<main.ProfessorBuffer> profBuf_;
   /**
-   * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+   * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
    */
   @java.lang.Override
   public java.util.List<main.ProfessorBuffer> getProfBufList() {
     return profBuf_;
   }
   /**
-   * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+   * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
    */
   @java.lang.Override
   public java.util.List<? extends main.ProfessorBufferOrBuilder> 
@@ -375,21 +493,21 @@ private static final long serialVersionUID = 0L;
     return profBuf_;
   }
   /**
-   * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+   * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
    */
   @java.lang.Override
   public int getProfBufCount() {
     return profBuf_.size();
   }
   /**
-   * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+   * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
    */
   @java.lang.Override
   public main.ProfessorBuffer getProfBuf(int index) {
     return profBuf_.get(index);
   }
   /**
-   * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+   * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
    */
   @java.lang.Override
   public main.ProfessorBufferOrBuilder getProfBufOrBuilder(
@@ -418,19 +536,25 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, birthdate_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, cell_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      output.writeInt32(4, age_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, gender_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, regDate_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, birthdate_);
     }
     if (((bitField0_ & 0x00000020) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, address_);
+      output.writeInt32(6, age_);
+    }
+    if (((bitField0_ & 0x00000040) != 0)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, regDate_);
+    }
+    if (((bitField0_ & 0x00000080) != 0)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, address_);
     }
     for (int i = 0; i < profBuf_.size(); i++) {
-      output.writeMessage(7, profBuf_.get(i));
+      output.writeMessage(9, profBuf_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -449,21 +573,27 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, birthdate_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, cell_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(4, age_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, gender_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, regDate_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, birthdate_);
     }
     if (((bitField0_ & 0x00000020) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, address_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(6, age_);
+    }
+    if (((bitField0_ & 0x00000040) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, regDate_);
+    }
+    if (((bitField0_ & 0x00000080) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, address_);
     }
     for (int i = 0; i < profBuf_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(7, profBuf_.get(i));
+        .computeMessageSize(9, profBuf_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -489,6 +619,16 @@ private static final long serialVersionUID = 0L;
     if (hasName()) {
       if (!getName()
           .equals(other.getName())) return false;
+    }
+    if (hasCell() != other.hasCell()) return false;
+    if (hasCell()) {
+      if (!getCell()
+          .equals(other.getCell())) return false;
+    }
+    if (hasGender() != other.hasGender()) return false;
+    if (hasGender()) {
+      if (!getGender()
+          .equals(other.getGender())) return false;
     }
     if (hasBirthdate() != other.hasBirthdate()) return false;
     if (hasBirthdate()) {
@@ -530,6 +670,14 @@ private static final long serialVersionUID = 0L;
     if (hasName()) {
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
+    }
+    if (hasCell()) {
+      hash = (37 * hash) + CELL_FIELD_NUMBER;
+      hash = (53 * hash) + getCell().hashCode();
+    }
+    if (hasGender()) {
+      hash = (37 * hash) + GENDER_FIELD_NUMBER;
+      hash = (53 * hash) + getGender().hashCode();
     }
     if (hasBirthdate()) {
       hash = (37 * hash) + BIRTHDATE_FIELD_NUMBER;
@@ -689,17 +837,21 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000001);
       name_ = "";
       bitField0_ = (bitField0_ & ~0x00000002);
-      birthdate_ = "";
+      cell_ = "";
       bitField0_ = (bitField0_ & ~0x00000004);
-      age_ = 0;
+      gender_ = "";
       bitField0_ = (bitField0_ & ~0x00000008);
-      regDate_ = "";
+      birthdate_ = "";
       bitField0_ = (bitField0_ & ~0x00000010);
-      address_ = "";
+      age_ = 0;
       bitField0_ = (bitField0_ & ~0x00000020);
+      regDate_ = "";
+      bitField0_ = (bitField0_ & ~0x00000040);
+      address_ = "";
+      bitField0_ = (bitField0_ & ~0x00000080);
       if (profBufBuilder_ == null) {
         profBuf_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000100);
       } else {
         profBufBuilder_.clear();
       }
@@ -742,23 +894,31 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000004) != 0)) {
         to_bitField0_ |= 0x00000004;
       }
-      result.birthdate_ = birthdate_;
+      result.cell_ = cell_;
       if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.age_ = age_;
         to_bitField0_ |= 0x00000008;
       }
+      result.gender_ = gender_;
       if (((from_bitField0_ & 0x00000010) != 0)) {
         to_bitField0_ |= 0x00000010;
       }
-      result.regDate_ = regDate_;
+      result.birthdate_ = birthdate_;
       if (((from_bitField0_ & 0x00000020) != 0)) {
+        result.age_ = age_;
         to_bitField0_ |= 0x00000020;
+      }
+      if (((from_bitField0_ & 0x00000040) != 0)) {
+        to_bitField0_ |= 0x00000040;
+      }
+      result.regDate_ = regDate_;
+      if (((from_bitField0_ & 0x00000080) != 0)) {
+        to_bitField0_ |= 0x00000080;
       }
       result.address_ = address_;
       if (profBufBuilder_ == null) {
-        if (((bitField0_ & 0x00000040) != 0)) {
+        if (((bitField0_ & 0x00000100) != 0)) {
           profBuf_ = java.util.Collections.unmodifiableList(profBuf_);
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000100);
         }
         result.profBuf_ = profBuf_;
       } else {
@@ -821,8 +981,18 @@ private static final long serialVersionUID = 0L;
         name_ = other.name_;
         onChanged();
       }
-      if (other.hasBirthdate()) {
+      if (other.hasCell()) {
         bitField0_ |= 0x00000004;
+        cell_ = other.cell_;
+        onChanged();
+      }
+      if (other.hasGender()) {
+        bitField0_ |= 0x00000008;
+        gender_ = other.gender_;
+        onChanged();
+      }
+      if (other.hasBirthdate()) {
+        bitField0_ |= 0x00000010;
         birthdate_ = other.birthdate_;
         onChanged();
       }
@@ -830,12 +1000,12 @@ private static final long serialVersionUID = 0L;
         setAge(other.getAge());
       }
       if (other.hasRegDate()) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000040;
         regDate_ = other.regDate_;
         onChanged();
       }
       if (other.hasAddress()) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000080;
         address_ = other.address_;
         onChanged();
       }
@@ -843,7 +1013,7 @@ private static final long serialVersionUID = 0L;
         if (!other.profBuf_.isEmpty()) {
           if (profBuf_.isEmpty()) {
             profBuf_ = other.profBuf_;
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000100);
           } else {
             ensureProfBufIsMutable();
             profBuf_.addAll(other.profBuf_);
@@ -856,7 +1026,7 @@ private static final long serialVersionUID = 0L;
             profBufBuilder_.dispose();
             profBufBuilder_ = null;
             profBuf_ = other.profBuf_;
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000100);
             profBufBuilder_ = 
               com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                  getProfBufFieldBuilder() : null;
@@ -952,7 +1122,9 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        name_ = s;
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
@@ -1010,23 +1182,190 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000002;
       name_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object cell_ = "";
+    /**
+     * <code>optional string cell = 3;</code>
+     * @return Whether the cell field is set.
+     */
+    public boolean hasCell() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional string cell = 3;</code>
+     * @return The cell.
+     */
+    public java.lang.String getCell() {
+      java.lang.Object ref = cell_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          cell_ = s;
+        }
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string cell = 3;</code>
+     * @return The bytes for cell.
+     */
+    public com.google.protobuf.ByteString
+        getCellBytes() {
+      java.lang.Object ref = cell_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        cell_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string cell = 3;</code>
+     * @param value The cell to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCell(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+      cell_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string cell = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearCell() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      cell_ = getDefaultInstance().getCell();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string cell = 3;</code>
+     * @param value The bytes for cell to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCellBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+      cell_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object gender_ = "";
+    /**
+     * <code>optional string gender = 4;</code>
+     * @return Whether the gender field is set.
+     */
+    public boolean hasGender() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>optional string gender = 4;</code>
+     * @return The gender.
+     */
+    public java.lang.String getGender() {
+      java.lang.Object ref = gender_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          gender_ = s;
+        }
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string gender = 4;</code>
+     * @return The bytes for gender.
+     */
+    public com.google.protobuf.ByteString
+        getGenderBytes() {
+      java.lang.Object ref = gender_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        gender_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string gender = 4;</code>
+     * @param value The gender to set.
+     * @return This builder for chaining.
+     */
+    public Builder setGender(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+      gender_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string gender = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearGender() {
+      bitField0_ = (bitField0_ & ~0x00000008);
+      gender_ = getDefaultInstance().getGender();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string gender = 4;</code>
+     * @param value The bytes for gender to set.
+     * @return This builder for chaining.
+     */
+    public Builder setGenderBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+      gender_ = value;
       onChanged();
       return this;
     }
 
     private java.lang.Object birthdate_ = "";
     /**
-     * <code>optional string birthdate = 3;</code>
+     * <code>optional string birthdate = 5;</code>
      * @return Whether the birthdate field is set.
      */
     public boolean hasBirthdate() {
-      return ((bitField0_ & 0x00000004) != 0);
+      return ((bitField0_ & 0x00000010) != 0);
     }
     /**
-     * <code>optional string birthdate = 3;</code>
+     * <code>optional string birthdate = 5;</code>
      * @return The birthdate.
      */
     public java.lang.String getBirthdate() {
@@ -1035,14 +1374,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        birthdate_ = s;
+        if (bs.isValidUtf8()) {
+          birthdate_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>optional string birthdate = 3;</code>
+     * <code>optional string birthdate = 5;</code>
      * @return The bytes for birthdate.
      */
     public com.google.protobuf.ByteString
@@ -1059,7 +1400,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional string birthdate = 3;</code>
+     * <code>optional string birthdate = 5;</code>
      * @param value The birthdate to set.
      * @return This builder for chaining.
      */
@@ -1068,23 +1409,23 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000010;
       birthdate_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional string birthdate = 3;</code>
+     * <code>optional string birthdate = 5;</code>
      * @return This builder for chaining.
      */
     public Builder clearBirthdate() {
-      bitField0_ = (bitField0_ & ~0x00000004);
+      bitField0_ = (bitField0_ & ~0x00000010);
       birthdate_ = getDefaultInstance().getBirthdate();
       onChanged();
       return this;
     }
     /**
-     * <code>optional string birthdate = 3;</code>
+     * <code>optional string birthdate = 5;</code>
      * @param value The bytes for birthdate to set.
      * @return This builder for chaining.
      */
@@ -1093,8 +1434,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000010;
       birthdate_ = value;
       onChanged();
       return this;
@@ -1102,15 +1442,15 @@ private static final long serialVersionUID = 0L;
 
     private int age_ ;
     /**
-     * <code>optional int32 age = 4;</code>
+     * <code>optional int32 age = 6;</code>
      * @return Whether the age field is set.
      */
     @java.lang.Override
     public boolean hasAge() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return ((bitField0_ & 0x00000020) != 0);
     }
     /**
-     * <code>optional int32 age = 4;</code>
+     * <code>optional int32 age = 6;</code>
      * @return The age.
      */
     @java.lang.Override
@@ -1118,22 +1458,22 @@ private static final long serialVersionUID = 0L;
       return age_;
     }
     /**
-     * <code>optional int32 age = 4;</code>
+     * <code>optional int32 age = 6;</code>
      * @param value The age to set.
      * @return This builder for chaining.
      */
     public Builder setAge(int value) {
-      bitField0_ |= 0x00000008;
+      bitField0_ |= 0x00000020;
       age_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional int32 age = 4;</code>
+     * <code>optional int32 age = 6;</code>
      * @return This builder for chaining.
      */
     public Builder clearAge() {
-      bitField0_ = (bitField0_ & ~0x00000008);
+      bitField0_ = (bitField0_ & ~0x00000020);
       age_ = 0;
       onChanged();
       return this;
@@ -1141,14 +1481,14 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object regDate_ = "";
     /**
-     * <code>optional string regDate = 5;</code>
+     * <code>optional string regDate = 7;</code>
      * @return Whether the regDate field is set.
      */
     public boolean hasRegDate() {
-      return ((bitField0_ & 0x00000010) != 0);
+      return ((bitField0_ & 0x00000040) != 0);
     }
     /**
-     * <code>optional string regDate = 5;</code>
+     * <code>optional string regDate = 7;</code>
      * @return The regDate.
      */
     public java.lang.String getRegDate() {
@@ -1157,14 +1497,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        regDate_ = s;
+        if (bs.isValidUtf8()) {
+          regDate_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>optional string regDate = 5;</code>
+     * <code>optional string regDate = 7;</code>
      * @return The bytes for regDate.
      */
     public com.google.protobuf.ByteString
@@ -1181,7 +1523,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional string regDate = 5;</code>
+     * <code>optional string regDate = 7;</code>
      * @param value The regDate to set.
      * @return This builder for chaining.
      */
@@ -1190,23 +1532,23 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000040;
       regDate_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional string regDate = 5;</code>
+     * <code>optional string regDate = 7;</code>
      * @return This builder for chaining.
      */
     public Builder clearRegDate() {
-      bitField0_ = (bitField0_ & ~0x00000010);
+      bitField0_ = (bitField0_ & ~0x00000040);
       regDate_ = getDefaultInstance().getRegDate();
       onChanged();
       return this;
     }
     /**
-     * <code>optional string regDate = 5;</code>
+     * <code>optional string regDate = 7;</code>
      * @param value The bytes for regDate to set.
      * @return This builder for chaining.
      */
@@ -1215,8 +1557,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000040;
       regDate_ = value;
       onChanged();
       return this;
@@ -1224,14 +1565,14 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object address_ = "";
     /**
-     * <code>optional string address = 6;</code>
+     * <code>optional string address = 8;</code>
      * @return Whether the address field is set.
      */
     public boolean hasAddress() {
-      return ((bitField0_ & 0x00000020) != 0);
+      return ((bitField0_ & 0x00000080) != 0);
     }
     /**
-     * <code>optional string address = 6;</code>
+     * <code>optional string address = 8;</code>
      * @return The address.
      */
     public java.lang.String getAddress() {
@@ -1240,14 +1581,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        address_ = s;
+        if (bs.isValidUtf8()) {
+          address_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>optional string address = 6;</code>
+     * <code>optional string address = 8;</code>
      * @return The bytes for address.
      */
     public com.google.protobuf.ByteString
@@ -1264,7 +1607,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional string address = 6;</code>
+     * <code>optional string address = 8;</code>
      * @param value The address to set.
      * @return This builder for chaining.
      */
@@ -1273,23 +1616,23 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000080;
       address_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional string address = 6;</code>
+     * <code>optional string address = 8;</code>
      * @return This builder for chaining.
      */
     public Builder clearAddress() {
-      bitField0_ = (bitField0_ & ~0x00000020);
+      bitField0_ = (bitField0_ & ~0x00000080);
       address_ = getDefaultInstance().getAddress();
       onChanged();
       return this;
     }
     /**
-     * <code>optional string address = 6;</code>
+     * <code>optional string address = 8;</code>
      * @param value The bytes for address to set.
      * @return This builder for chaining.
      */
@@ -1298,8 +1641,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000080;
       address_ = value;
       onChanged();
       return this;
@@ -1308,9 +1650,9 @@ private static final long serialVersionUID = 0L;
     private java.util.List<main.ProfessorBuffer> profBuf_ =
       java.util.Collections.emptyList();
     private void ensureProfBufIsMutable() {
-      if (!((bitField0_ & 0x00000040) != 0)) {
+      if (!((bitField0_ & 0x00000100) != 0)) {
         profBuf_ = new java.util.ArrayList<main.ProfessorBuffer>(profBuf_);
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000100;
        }
     }
 
@@ -1318,7 +1660,7 @@ private static final long serialVersionUID = 0L;
         main.ProfessorBuffer, main.ProfessorBuffer.Builder, main.ProfessorBufferOrBuilder> profBufBuilder_;
 
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public java.util.List<main.ProfessorBuffer> getProfBufList() {
       if (profBufBuilder_ == null) {
@@ -1328,7 +1670,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public int getProfBufCount() {
       if (profBufBuilder_ == null) {
@@ -1338,7 +1680,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public main.ProfessorBuffer getProfBuf(int index) {
       if (profBufBuilder_ == null) {
@@ -1348,7 +1690,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public Builder setProfBuf(
         int index, main.ProfessorBuffer value) {
@@ -1365,7 +1707,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public Builder setProfBuf(
         int index, main.ProfessorBuffer.Builder builderForValue) {
@@ -1379,7 +1721,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public Builder addProfBuf(main.ProfessorBuffer value) {
       if (profBufBuilder_ == null) {
@@ -1395,7 +1737,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public Builder addProfBuf(
         int index, main.ProfessorBuffer value) {
@@ -1412,7 +1754,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public Builder addProfBuf(
         main.ProfessorBuffer.Builder builderForValue) {
@@ -1426,7 +1768,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public Builder addProfBuf(
         int index, main.ProfessorBuffer.Builder builderForValue) {
@@ -1440,7 +1782,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public Builder addAllProfBuf(
         java.lang.Iterable<? extends main.ProfessorBuffer> values) {
@@ -1455,12 +1797,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public Builder clearProfBuf() {
       if (profBufBuilder_ == null) {
         profBuf_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000100);
         onChanged();
       } else {
         profBufBuilder_.clear();
@@ -1468,7 +1810,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public Builder removeProfBuf(int index) {
       if (profBufBuilder_ == null) {
@@ -1481,14 +1823,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public main.ProfessorBuffer.Builder getProfBufBuilder(
         int index) {
       return getProfBufFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public main.ProfessorBufferOrBuilder getProfBufOrBuilder(
         int index) {
@@ -1498,7 +1840,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public java.util.List<? extends main.ProfessorBufferOrBuilder> 
          getProfBufOrBuilderList() {
@@ -1509,14 +1851,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public main.ProfessorBuffer.Builder addProfBufBuilder() {
       return getProfBufFieldBuilder().addBuilder(
           main.ProfessorBuffer.getDefaultInstance());
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public main.ProfessorBuffer.Builder addProfBufBuilder(
         int index) {
@@ -1524,7 +1866,7 @@ private static final long serialVersionUID = 0L;
           index, main.ProfessorBuffer.getDefaultInstance());
     }
     /**
-     * <code>repeated .main.ProfessorBuffer profBuf = 7;</code>
+     * <code>repeated .main.ProfessorBuffer profBuf = 9;</code>
      */
     public java.util.List<main.ProfessorBuffer.Builder> 
          getProfBufBuilderList() {
@@ -1537,7 +1879,7 @@ private static final long serialVersionUID = 0L;
         profBufBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             main.ProfessorBuffer, main.ProfessorBuffer.Builder, main.ProfessorBufferOrBuilder>(
                 profBuf_,
-                ((bitField0_ & 0x00000040) != 0),
+                ((bitField0_ & 0x00000100) != 0),
                 getParentForChildren(),
                 isClean());
         profBuf_ = null;
@@ -1570,7 +1912,7 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<StudentBuffer>
+  @java.lang.Deprecated public static final com.google.protobuf.Parser<StudentBuffer>
       PARSER = new com.google.protobuf.AbstractParser<StudentBuffer>() {
     @java.lang.Override
     public StudentBuffer parsePartialFrom(

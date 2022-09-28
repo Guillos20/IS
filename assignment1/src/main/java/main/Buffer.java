@@ -33,19 +33,15 @@ public final class Buffer {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014buffer.proto\022\004main\"\357\001\n\rStudentBuffer\022\017" +
-      "\n\002id\030\001 \001(\005H\000\210\001\001\022\021\n\004name\030\002 \001(\tH\001\210\001\001\022\026\n\tbi" +
-      "rthdate\030\003 \001(\tH\002\210\001\001\022\020\n\003age\030\004 \001(\005H\003\210\001\001\022\024\n\007" +
-      "regDate\030\005 \001(\tH\004\210\001\001\022\024\n\007address\030\006 \001(\tH\005\210\001\001" +
-      "\022&\n\007profBuf\030\007 \003(\0132\025.main.ProfessorBuffer" +
-      "B\005\n\003_idB\007\n\005_nameB\014\n\n_birthdateB\006\n\004_ageB\n" +
-      "\n\010_regDateB\n\n\010_address\"\340\001\n\017ProfessorBuff" +
-      "er\022\017\n\002id\030\001 \001(\005H\000\210\001\001\022\021\n\004name\030\002 \001(\tH\001\210\001\001\022\026" +
-      "\n\tbirthdate\030\003 \001(\tH\002\210\001\001\022\030\n\013phoneNumber\030\004 " +
-      "\001(\tH\003\210\001\001\022\024\n\007address\030\005 \001(\tH\004\210\001\001\022\'\n\nstuden" +
-      "tBuf\030\006 \003(\0132\023.main.StudentBufferB\005\n\003_idB\007" +
-      "\n\005_nameB\014\n\n_birthdateB\016\n\014_phoneNumberB\n\n" +
-      "\010_addressB\010\n\004mainP\001b\006proto3"
+      "\n\014buffer.proto\022\004main\"\261\001\n\rStudentBuffer\022\n" +
+      "\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004cell\030\003 \001(\t\022\016" +
+      "\n\006gender\030\004 \001(\t\022\021\n\tbirthdate\030\005 \001(\t\022\013\n\003age" +
+      "\030\006 \001(\005\022\017\n\007regDate\030\007 \001(\t\022\017\n\007address\030\010 \001(\t" +
+      "\022&\n\007profBuf\030\t \003(\0132\025.main.ProfessorBuffer" +
+      "\"\215\001\n\017ProfessorBuffer\022\n\n\002id\030\001 \001(\005\022\014\n\004name" +
+      "\030\002 \001(\t\022\021\n\tbirthdate\030\003 \001(\t\022\023\n\013phoneNumber" +
+      "\030\004 \001(\t\022\017\n\007address\030\005 \001(\t\022\'\n\nstudentBuf\030\006 " +
+      "\003(\0132\023.main.StudentBufferB\010\n\004mainP\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -56,13 +52,13 @@ public final class Buffer {
     internal_static_main_StudentBuffer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_main_StudentBuffer_descriptor,
-        new java.lang.String[] { "Id", "Name", "Birthdate", "Age", "RegDate", "Address", "ProfBuf", "Id", "Name", "Birthdate", "Age", "RegDate", "Address", });
+        new java.lang.String[] { "Id", "Name", "Cell", "Gender", "Birthdate", "Age", "RegDate", "Address", "ProfBuf", });
     internal_static_main_ProfessorBuffer_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_main_ProfessorBuffer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_main_ProfessorBuffer_descriptor,
-        new java.lang.String[] { "Id", "Name", "Birthdate", "PhoneNumber", "Address", "StudentBuf", "Id", "Name", "Birthdate", "PhoneNumber", "Address", });
+        new java.lang.String[] { "Id", "Name", "Birthdate", "PhoneNumber", "Address", "StudentBuf", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

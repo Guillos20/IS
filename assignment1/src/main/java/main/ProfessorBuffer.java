@@ -15,7 +15,7 @@ private static final long serialVersionUID = 0L;
   private ProfessorBuffer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  ProfessorBuffer() {
+  private ProfessorBuffer() {
     name_ = "";
     birthdate_ = "";
     phoneNumber_ = "";
@@ -60,27 +60,27 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
+            com.google.protobuf.ByteString bs = input.readBytes();
             bitField0_ |= 0x00000002;
-            name_ = s;
+            name_ = bs;
             break;
           }
           case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
+            com.google.protobuf.ByteString bs = input.readBytes();
             bitField0_ |= 0x00000004;
-            birthdate_ = s;
+            birthdate_ = bs;
             break;
           }
           case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
+            com.google.protobuf.ByteString bs = input.readBytes();
             bitField0_ |= 0x00000008;
-            phoneNumber_ = s;
+            phoneNumber_ = bs;
             break;
           }
           case 42: {
-            java.lang.String s = input.readStringRequireUtf8();
+            com.google.protobuf.ByteString bs = input.readBytes();
             bitField0_ |= 0x00000010;
-            address_ = s;
+            address_ = bs;
             break;
           }
           case 50: {
@@ -89,7 +89,7 @@ private static final long serialVersionUID = 0L;
               mutable_bitField0_ |= 0x00000020;
             }
             studentBuf_.add(
-                input.readMessage(main.StudentBuffer.parser(), extensionRegistry));
+                input.readMessage(main.StudentBuffer.PARSER, extensionRegistry));
             break;
           }
           default: {
@@ -172,7 +172,9 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      name_ = s;
+      if (bs.isValidUtf8()) {
+        name_ = s;
+      }
       return s;
     }
   }
@@ -218,7 +220,9 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      birthdate_ = s;
+      if (bs.isValidUtf8()) {
+        birthdate_ = s;
+      }
       return s;
     }
   }
@@ -264,7 +268,9 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      phoneNumber_ = s;
+      if (bs.isValidUtf8()) {
+        phoneNumber_ = s;
+      }
       return s;
     }
   }
@@ -310,7 +316,9 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      address_ = s;
+      if (bs.isValidUtf8()) {
+        address_ = s;
+      }
       return s;
     }
   }
@@ -903,7 +911,9 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        name_ = s;
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
@@ -961,8 +971,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000002;
       name_ = value;
       onChanged();
       return this;
@@ -986,7 +995,9 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        birthdate_ = s;
+        if (bs.isValidUtf8()) {
+          birthdate_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
@@ -1044,8 +1055,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000004;
       birthdate_ = value;
       onChanged();
       return this;
@@ -1069,7 +1079,9 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        phoneNumber_ = s;
+        if (bs.isValidUtf8()) {
+          phoneNumber_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
@@ -1127,8 +1139,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000008;
       phoneNumber_ = value;
       onChanged();
       return this;
@@ -1152,7 +1163,9 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        address_ = s;
+        if (bs.isValidUtf8()) {
+          address_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
@@ -1210,8 +1223,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000010;
       address_ = value;
       onChanged();
       return this;
@@ -1482,7 +1494,7 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ProfessorBuffer>
+  @java.lang.Deprecated public static final com.google.protobuf.Parser<ProfessorBuffer>
       PARSER = new com.google.protobuf.AbstractParser<ProfessorBuffer>() {
     @java.lang.Override
     public ProfessorBuffer parsePartialFrom(

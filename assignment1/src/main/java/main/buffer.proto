@@ -7,11 +7,14 @@ option java_package = "main";
 message StudentBuffer{
   optional int32 id = 1;
   optional string name = 2;
-  optional string birthdate = 3;
-  optional int32 age = 4;
-  optional string regDate = 5;
-  optional string address = 6;
-  repeated ProfessorBuffer profBuf = 7;
+  optional string cell = 3;
+  optional string gender = 4;
+  optional string birthdate = 5;
+  optional int32 age = 6;
+  optional string regDate = 7;
+  optional string address = 8;
+  
+  repeated ProfessorBuffer profBuf = 9;
 }
 message ProfessorBuffer{
   optional int32 id = 1;
