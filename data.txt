@@ -1,6 +1,7 @@
-XML Time 2947
-Compression GZIP Time 303
-xml + gzip time 3250
-File Size 6810091
-File GZIP Size 1086537
-Unmarshall time 833
+XML Time 3110
+Compression GZIP Time 329
+xml + gzip time 3439
+File Size 6810438
+File GZIP Size 1086337
+Protocol Buffers Time 7897
+Protocol Buffers size 2994698Unmarshall time 736

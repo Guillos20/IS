@@ -22,8 +22,8 @@ import java.util.zip.GZIPOutputStream;
 
 public class AppXML {
     public static long timeBuf = 0;
-    public static ArrayList<StudentBuffer> studBuf = new ArrayList<>();
-    public static ArrayList<ProfessorBuffer> profjam = new ArrayList<>();
+    public static ArrayList<String> studBuf = new ArrayList<>();
+    public static ArrayList<String> profjam = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -38,8 +38,18 @@ public class AppXML {
             School school = createSchoolObject();
             marshaller.marshal(school, f);
             long timeB = System.currentTimeMillis();
-            
-            long xmlTime = (timeB - timeA)- timeBuf;
+            long xmlTime = (timeB - timeA) - timeBuf;
+            long timeBefore = System.currentTimeMillis();
+            FileWriter fos = new FileWriter("assignment");
+            for (String student : studBuf) {
+                fos.write(student);
+            }
+            for (String prof : profjam) {
+                fos.write(prof);
+            }
+            fos.close();
+            long timeAfter = System.currentTimeMillis();
+            timeBuf += (timeAfter - timeBefore);
             fileWriter.write("XML Time " + xmlTime + "\n");
             System.out.println("XML Time " + xmlTime);
             timeA = System.currentTimeMillis();
@@ -48,12 +58,15 @@ public class AppXML {
             fileWriter.write("Compression GZIP Time " + (timeB - timeA) + "\n"
                     + "xml + gzip time " + (xmlTime + (timeB - timeA)) + "\n"
                     + "File Size " + f.length() + "\n"
-                    + "File GZIP Size " + new File("assignment.xsl.gz").length() + "\n");
+                    + "File GZIP Size " + new File("assignment.xsl.gz").length() + "\n"
+                    + "Protocol Buffers Time " + timeBuf + "\n" + "Protocol Buffers size " + new File("assignment").length());
             System.out.println("Compression GZIP Time " + (timeB - timeA));
             System.out.println("xml + gzip time " + (xmlTime + (timeB - timeA)));
+            System.out.println("Total time for Protocol Buffers " + timeBuf);
+            System.out.println("Protocol Buffers size " + new File("assignment").length());
             System.out.println("File Size " + f.length());
             System.out.println("File GZIP Size " + new File("assignment.xsl.gz").length());
-            System.out.println("Total time for Protocol Buffers " + timeBuf);
+            
             timeA = System.currentTimeMillis();
             File file = new File("assignment.xsl");
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
@@ -99,7 +112,7 @@ public class AppXML {
             // this is for the protocols
             long timeBefore = System.currentTimeMillis();
             StudentBuffer stud = StudentBuffering(i, birthdate, name, cell, gender, ageBuf, regiDate, addr);
-            studBuf.add(stud);
+            studBuf.add(stud.toString());
             long timeAfter = System.currentTimeMillis();
             timeBuf += (timeAfter - timeBefore);
 
@@ -113,15 +126,15 @@ public class AppXML {
             String addr = faker.address().streetAddress();
             professor.setter(i, name, birth, cell, addr);
             long timeBefore = System.currentTimeMillis();
-            ProfessorBuffer prof= ProfessorBuffering(i, birthdate, name, cell, addr);
-            profjam.add(prof);
+            ProfessorBuffer prof = ProfessorBuffering(i, birthdate, name, cell, addr);
+            profjam.add(prof.toString());
             long timeAfter = System.currentTimeMillis();
             timeBuf += (timeAfter - timeBefore);
             List<Student> studentsSub = allStudents.subList(min, max);
             for (Student student : studentsSub)
                 student.setProfessor(professor.getName());
             professor.setStudents(studentsSub);
-            
+
             allProfessors.add(professor);
             if (max == allStudents.size())
                 break;
@@ -153,12 +166,12 @@ public class AppXML {
             String regiDate, String addr) throws FileNotFoundException {
         StudentBuffer stud = StudentBuffer.newBuilder().setId(id).setBirthdate(birth).setName(name).setCell(cell)
                 .setGender(gender).setAge(ageBuf).setRegDate(regiDate).setAddress(addr).build();
-                FileOutputStream fos = new FileOutputStream("Student.txt");
-                try {
-                    stud.writeTo(fos);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        FileOutputStream fos = new FileOutputStream("Student.txt");
+        try {
+            stud.writeTo(fos);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return stud;
     }
 
