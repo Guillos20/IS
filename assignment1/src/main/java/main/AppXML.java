@@ -8,6 +8,7 @@ import jakarta.xml.bind.Unmarshaller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -21,6 +22,7 @@ public class AppXML {
 
     public static void main(String[] args) {
         try {
+            FileWriter fileWriter = new FileWriter("data.txt");
             long timeA = System.currentTimeMillis();
             JAXBContext jaxbContext;
             jaxbContext = JAXBContext.newInstance(School.class);
@@ -30,12 +32,17 @@ public class AppXML {
             marshaller.marshal(createSchoolObject(), f);
             long timeB = System.currentTimeMillis();
             long xmlTime = timeB - timeA;
+            fileWriter.write("XML Time " + xmlTime + "\n");
             System.out.println("XML Time " + xmlTime);
             timeA = System.currentTimeMillis();
             gZipCompression(f.getPath());
             timeB = System.currentTimeMillis();
+            fileWriter.write("Compression GZIP Time " + (timeB - timeA) + "\n"
+                    + "xml + gzip time " + xmlTime + (timeB - timeA) + "\n"
+                    + "File Size " + f.length() + "\n"
+                    + "File GZIP Size " + new File("assignment.xsl.gz").length() + "\n");
             System.out.println("Compression GZIP Time " + (timeB - timeA));
-            System.out.println("XML + GZIP Time " + xmlTime + (timeB - timeA));
+            System.out.println("xml + gzip time " + xmlTime + (timeB - timeA) + "\n");
             System.out.println("File Size " + f.length());
             System.out.println("File GZIP Size " + new File("assignment.xsl.gz").length());
             timeA = System.currentTimeMillis();
@@ -44,6 +51,8 @@ public class AppXML {
             School s = (School) unmarshaller.unmarshal(file);
             System.out.println(s);
             timeB = System.currentTimeMillis();
+            fileWriter.write("Unmarshall time " + (timeB - timeA) + "\n");
+            fileWriter.close();
             System.out.println("Unmarshall time " + (timeB - timeA));
 
         } catch (JAXBException e) {
