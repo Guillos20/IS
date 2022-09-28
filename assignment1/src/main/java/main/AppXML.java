@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.Unmarshaller;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -34,11 +35,10 @@ public class AppXML {
             timeB = System.currentTimeMillis();
             System.out.println(timeB - timeA);
             System.out.println(f.length());
-            // XML Unmarshalling
-            /*File file = new File("C:\\test\\company.xml");
+            File file = new File("assignment.xsl");
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            Company o = (Company) jaxbUnmarshaller.unmarshal(file);
-            System.out.println(o);*/
+            School s = (School) jaxbUnmarshaller.unmarshal(file);
+            System.out.println(s);
 
         } catch (JAXBException e) {
             e.printStackTrace();
