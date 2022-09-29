@@ -39,9 +39,9 @@ public class AppXML {
             School school = createSchoolObject();
             marshaller.marshal(school, f);
             long timeB = System.currentTimeMillis();
-            long xmlTime = (timeB - timeA) - timeBuf;
+            long xmlTime = ((timeB - timeA) - timeBuf);
             long timeBefore = System.currentTimeMillis();
-            FileWriter fos = new FileWriter("assignment");
+            FileWriter fos = new FileWriter("assignment.proto");
             for (String student : studBuf) {
                 fos.write(student);
             }
@@ -60,11 +60,11 @@ public class AppXML {
                     + "xml + gzip time " + (xmlTime + (timeB - timeA)) + "\n"
                     + "File Size " + f.length() + "\n"
                     + "File GZIP Size " + new File("assignment.xsl.gz").length() + "\n"
-                    + "Protocol Buffers Time " + timeBuf + "\n" + "Protocol Buffers size " + new File("assignment").length());
+                    + "Protocol Buffers Time " + timeBuf + "\n" + "Protocol Buffers size " + new File("assignment.bin").length());
             System.out.println("Compression GZIP Time " + (timeB - timeA));
             System.out.println("xml + gzip time " + (xmlTime + (timeB - timeA)));
             System.out.println("Total time for Protocol Buffers " + timeBuf);
-            System.out.println("Protocol Buffers size " + new File("assignment").length());
+            System.out.println("Protocol Buffers size " + new File("assignment.bin").length());
             System.out.println("File Size " + f.length());
             System.out.println("File GZIP Size " + new File("assignment.xsl.gz").length());
 
@@ -72,12 +72,29 @@ public class AppXML {
             File file = new File("assignment.xsl");
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             School s = (School) unmarshaller.unmarshal(file);
-            System.out.println(s);
+            //System.out.println(s);
             timeB = System.currentTimeMillis();
             fileWriter.write("Unmarshall time " + (timeB - timeA) + "\n");
+            timeBefore = System.currentTimeMillis();
             decompressGzipFile("assignment.xsl.gz", "assignmentDecompressed.xsl");
+            timeAfter = System.currentTimeMillis();
+            fileWriter.write(("Uncompression GZIP Time " + (timeAfter - timeBefore)));
             fileWriter.close();
+            System.out.println("Uncompression GZIP Time " + (timeAfter - timeBefore));
+
             System.out.println("Unmarshall time " + (timeB - timeA));
+
+
+            /*this no working but should be idk imma kms
+              timeBefore = System.currentTimeMillis();
+              
+              FileInputStream fis = new FileInputStream("assignment.bin");
+              while(fis!= null){
+              StudentBuffer student = new StudentBuffer.parseFrom(new
+              FileInputStream("assignment.bin")).build();
+              }
+              timeAfter = System.currentTimeMillis();
+             */
 
         } catch (JAXBException e) {
             e.printStackTrace();
@@ -186,12 +203,6 @@ public class AppXML {
             String regiDate, String addr) throws FileNotFoundException {
         StudentBuffer stud = StudentBuffer.newBuilder().setId(id).setBirthdate(birth).setName(name).setCell(cell)
                 .setGender(gender).setAge(ageBuf).setRegDate(regiDate).setAddress(addr).build();
-        FileOutputStream fos = new FileOutputStream("Student.txt");
-        try {
-            stud.writeTo(fos);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         return stud;
     }
 
