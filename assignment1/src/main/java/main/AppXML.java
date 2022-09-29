@@ -18,6 +18,7 @@ import java.nio.file.Paths;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.*;
+import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 public class AppXML {
@@ -66,7 +67,7 @@ public class AppXML {
             System.out.println("Protocol Buffers size " + new File("assignment").length());
             System.out.println("File Size " + f.length());
             System.out.println("File GZIP Size " + new File("assignment.xsl.gz").length());
-            
+
             timeA = System.currentTimeMillis();
             File file = new File("assignment.xsl");
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
@@ -74,6 +75,7 @@ public class AppXML {
             System.out.println(s);
             timeB = System.currentTimeMillis();
             fileWriter.write("Unmarshall time " + (timeB - timeA) + "\n");
+            decompressGzipFile("assignment.xsl.gz", "assignmentDecompressed.xsl");
             fileWriter.close();
             System.out.println("Unmarshall time " + (timeB - timeA));
 
@@ -157,6 +159,24 @@ public class AppXML {
             while ((len = fis.read(buffer)) > 0) {
                 gos.write(buffer, 0, len);
             }
+        }
+
+    }
+
+    private static void decompressGzipFile(String gzipFile, String newFile) {
+        try {
+            FileInputStream fis = new FileInputStream(gzipFile);
+            GZIPInputStream gis = new GZIPInputStream(fis);
+            FileOutputStream fos = new FileOutputStream(newFile);
+            byte[] buffer = new byte[1024];
+            int len;
+            while((len = gis.read(buffer)) != -1){
+                fos.write(buffer, 0, len);
+            }
+            fos.close();
+            gis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }
